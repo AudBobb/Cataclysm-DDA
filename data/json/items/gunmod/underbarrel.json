@@ -592,5 +592,51 @@
     "location": "underbarrel",
     "mod_targets": [ "smg", "pistol" ],
     "min_skills": [ [ "weapon", 3 ], [ "gun", 1 ] ]
+  },
+  {
+    "id": "flashlight_underbarrel",
+    "type": "GUNMOD",
+    "name": { "str": "underbarrel flashlight (off)" },
+    "description": "Flashlight designed to be mounted under a gun's barrel.",
+    "material": [ "plastic", "aluminum" ],
+    "symbol": ";",
+    "color": "dark_gray",
+    "weight": "140 g",
+    "volume": "121 ml",
+    "longest_side": "136 mm",
+    "charges_per_use": 1,
+    "ammo": [ "battery" ],
+    "location": "underbarrel",
+    "mod_targets": [ "shotgun", "rifle", "smg", "crossbow", "pistol" ],
+    "install_time": "1 m",
+    "min_skills": [ [ "weapon", 2 ] ],
+    "flags": [ "WATER_BREAK_ACTIVE" ],
+    "use_action": {
+      "type": "transform",
+      "msg": "You turn the flashlight on.",
+      "menu_text": "Turn on",
+      "target": "flashlight_underbarrel_on",
+      "active": true,
+      "need_charges": 1,
+      "need_charges_msg": "The flashlight's batteries are dead."
+    },
+    "pocket_data": [ { "pocket_type": "MAGAZINE_WELL", "rigid": true, "flag_restriction": [ "BATTERY_MEDIUM" ] } ]
+  },
+  {
+    "id": "flashlight_underbarrel_on",
+    "copy-from": "flashlight_underbarrel",
+    "type": "GUNMOD",
+    "name": { "str": "underbarrel flashlight (on)" },
+    "power_draw": "1560 mW",
+    "revert_to": "flashlight_underbarrel",
+    "use_action": {
+      "type": "transform",
+      "msg": "You turn the flashlight off.",
+      "menu_text": "Turn off",
+      "target": "flashlight_underbarrel",
+      "active": false,
+      "ammo_scale": 0
+    },
+    "flags": [ "LIGHT_300", "CHARGEDIM", "TRADER_AVOID", "WATER_BREAK" ]
   }
 ]
